@@ -10,18 +10,23 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+
 public class dominosStepDef {
+    public WebDriverWait wait;
+
+
 
     @Given("the user is on the login page")
     public void the_user_is_on_the_login_page() {
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
         System.out.println("I opened the browser and navigate to dominos.com.tr");
+        String actualTitle = Driver.get().getCurrentUrl();
+        Assert.assertEquals("Verify this website","https://www.dominos.com.tr/",actualTitle);
 
 
     }
@@ -39,17 +44,19 @@ public class dominosStepDef {
         AddressPage addressPage = new AddressPage();
         addressPage.chooseAllAddress();
         addressPage.selectedAddress.click();
+        System.out.println("Order District is Selected");
 
 
     }
 
     @When("navigates to Campaigns Page")
     public void navigates_to_Campaigns_Page() {
-        BasePage basePage = new BasePage();
-        basePage.notCookie.click();
+        HomePage homePage = new HomePage();
+        homePage.notCookie.click();
         WebDriverWait wait = new WebDriverWait(Driver.get(),10);
-        wait.until(ExpectedConditions.elementToBeClickable(basePage.allCampaigns));
-        basePage.allCampaigns.click();
+        wait.until(ExpectedConditions.elementToBeClickable(homePage.allCampaigns));
+        homePage.allCampaigns.click();
+        Assert.assertEquals("Verify pageSubTitle","TÜM Kampanyalar",homePage.getPageSubTitle());
 
 
     }
@@ -67,11 +74,11 @@ public class dominosStepDef {
         AllCampaignsPage allCampaignsPage = new AllCampaignsPage();
         addToBasket.chooseInProduct();
         addToBasket.addToBasket();
-        BrowserUtils.waitFor(5);
-
-
+        System.out.println("This product added the basket");
+        BrowserUtils.waitFor(3);
         allCampaignsPage.extrasClose.click();
-        BrowserUtils.waitFor(2);
+
+
 
 
     }
@@ -80,13 +87,8 @@ public class dominosStepDef {
     public void go_to_Basket() {
 
         AllCampaignsPage allCampaignsPage = new AllCampaignsPage();
-
         allCampaignsPage.goingToBasketButton.click();
-        BrowserUtils.waitFor(2);
-
-
         allCampaignsPage.goToBasketButton.click();
-        BrowserUtils.waitFor(2);
 
 
     }
@@ -94,11 +96,10 @@ public class dominosStepDef {
     @When("approve the Basket")
     public void approve_the_Basket() {
         BasketPage basketPage = new BasketPage();
+        Assert.assertEquals("Verify pageSubTitle","Sepetim",basketPage.getPageSubTitle());
         basketPage.orderButton.click();
-
-
         basketPage.continueBasket.click();
-        BrowserUtils.waitFor(2);
+
 
 
 
@@ -107,7 +108,7 @@ public class dominosStepDef {
     @When("complete Address")
     public void complete_Address() {
         AddressPage addressPage = new AddressPage();
-        addressPage.completeAddress("95", "8", "071502229");
+        addressPage.completeAddress("4", "4", "071502229");
 
 
     }

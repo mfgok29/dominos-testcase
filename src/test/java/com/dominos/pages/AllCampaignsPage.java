@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AllCampaignsPage {
+public class AllCampaignsPage extends BasePage{
     public AllCampaignsPage(){
         PageFactory.initElements(Driver.get(),this);
     }

@@ -5,23 +5,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class BasePage {
-    public BasePage(){
-        PageFactory.initElements(Driver.get(),this);
 
+    public BasePage() {
+        PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy(css = "a[id*=\"BUTTON_CAMPAIGNS\"]")
-    public WebElement allCampaigns;
+    @FindBy(css = "h1[class*=\"pageHeader__Title\"]")
+    public WebElement pageSubTitle;
 
-    @FindBy(css = "a[id*=\"BUTTON_PIZZAS\"]")
-    public WebElement allPizzas;
+    public String getPageSubTitle() {
 
-    @FindBy(css = "a[id*=\"BUTTON_EXTRAFLAVORS\"]")
-    public WebElement extras;
-
-    @FindBy(css = "i[class*='icon-times-bold']")
-    public WebElement notCookie;
-
+        return pageSubTitle.getText();
+    }
 }

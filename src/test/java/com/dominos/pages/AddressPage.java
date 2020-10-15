@@ -31,13 +31,13 @@ public class AddressPage {
     @FindBy(css = "div[id*=\"DROPDOWN_COUNTY\"]")
     public WebElement dropdownElementCounty;
 
-    @FindBy(xpath = "//div[text()=\"Bağcılar\"]")
+    @FindBy(xpath = "//div[text()=\"Kağıthane\"]")
     public WebElement selectedCounty;
 
     @FindBy(css = "div[id*=\"DROPDOWN_DISTRICT\"]")
     public WebElement dropdownElementDistrict;
 
-    @FindBy(xpath = "//div[text()=\"Kirazlı Mh.\"]")
+    @FindBy(xpath = "//div[text()=\"Çeliktepe Mh.\"]")
     public WebElement selectedDistrict;
 
     @FindBy(css = "a[id*=\"BUTTON_ADDRESSSELECT\"]")
@@ -46,7 +46,7 @@ public class AddressPage {
     @FindBy(css = "div[id*=\"DROPDOWN_STREET\"]")
     public WebElement dropdownElementStreet;
 
-    @FindBy(xpath = "//div[text()=\"Mehmet Akif Blv.\"]")
+    @FindBy(xpath = "//div[text()=\"Aldemir Sk.\"]")
     public WebElement selectedStreet;
 
     @FindBy(css = "input[id*=\"APARTMENTNUMBER\"]")

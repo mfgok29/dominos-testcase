@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class BasketPage {
+public class BasketPage extends BasePage{
     public BasketPage(){
         PageFactory.initElements(Driver.get(),this);
     }
